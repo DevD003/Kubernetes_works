@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-queue
+
+spec:
+  selector:
+    #The label to be selected
+    app: queue
+    release: "1"
+  ports:
+    - name: http
+      # admin console port:8161
+      port: 8161
+      # K8s only allows any custom port > 30000 
+      nodePort: 30010
+  
+  type: NodePort
+ 

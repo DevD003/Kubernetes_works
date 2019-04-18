@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetman-webapp
+
+spec:
+  #This Defines Pods that are represented by this service 
+  #The Service Becomes a network end-point for either other services / maybe external users to connect to 
+  selector:
+    #The label to be selected
+    app: webapp
+    release: "0-5"
+  ports:
+    - name: http
+      port: 80
+      # only specify nodeport when type is NodePort 
+      # K8s only allows any port > 30000 
+      nodePort: 30080
+  
+  #type of the service
+  #'LoadBalancer' type for some cloud providers
+  #'ClusterIP' type for in-cluster communication only
+  #'NodePort' type exposes a port through the node to outside 
+  type: NodePort
+ 
