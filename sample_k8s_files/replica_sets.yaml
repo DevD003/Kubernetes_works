@@ -9,7 +9,7 @@ spec:
     matchLabels:
       app: webapp
   # no. of replicas of the pod to maintain 
-  replicas: 2 
+  replicas: 1 
   #template for the pods
   template:
     metadata:
